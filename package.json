@@ -1,0 +1,30 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "Wetube Practice",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinist94/wetube-210720.git"
+  },
+  "author": "Sojin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinist94/wetube-210720/issues"
+  },
+  "homepage": "https://github.com/jinist94/wetube-210720#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.4",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "nodemon": "^2.0.12"
+  }
+}
