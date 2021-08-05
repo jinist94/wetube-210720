@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/jinist94/wetube-210720#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.13.4",
     "morgan": "^1.10.0",
