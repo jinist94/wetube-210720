@@ -53,7 +53,45 @@ export const postLogin = async(req, res) => {
     return res.redirect("/");
 }
 
-export const edit = (req, res) => res.send("Edit User");
+export const startGithubLogin = (req, res) => {
+    const baseUrl = "https://github.com/login/oauth/authorize";
+    const config = {
+        client_id:"893b664abf83f2c71af0",
+        allow_signup:false,
+        scope : "read:user user:email" //should be saperated by space  
+    }
+    const params = new URLSearchParams(config).toString();
+    const finalUrl = `${baseUrl}?${params}`;
+    return res.redirect(finalUrl)
+}
+export const finishGithubLogin = (req, res) => {
+
+}
+
+export const getEdit = (req, res) => {
+    return res.render("edit-profile", {pageTitle: "Edit Profile"});
+}
+export const postEdit = async (req, res) => {
+    const {
+        session : {
+         user : { _id },
+         },
+        body: {name, email, username, location} } = req; // id = req.session.user.id;
+    const exists = await User.exists({$or: [{ username }, { email }]});
+    if(exists){
+        return res.status(400).render("edit-profile", {
+            pageTitle: "Edit Profile", errorMessage : "This username/email is already taken."
+        });
+    }
+    const updatedUser = await User.findByIdAndUpdate(_id, {
+        name,
+        email,
+        username,
+        location
+    }, {new:true});
+    req.session.user = updatedUser;
+    return res.redirect("/users/edit");
+}
 export const remove = (req, res) => res.send("remove User");
 export const logout = (req, res) => res.send("Logout");
 export const see = (req, res) => res.send("See User");
