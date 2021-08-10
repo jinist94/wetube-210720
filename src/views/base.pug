@@ -15,8 +15,9 @@ html(lang="ko")
                     if loggedIn 
                         li
                             a(href="/videos/upload") Upload Video
-                        li 
-                            a(href="/users/edit") Edit Profile
+                        if !loggedInUser.SocialOnly
+                            li 
+                                a(href="/users/edit") Edit Profile
                         li
                             a(href="/logout") Log Out
                     else
