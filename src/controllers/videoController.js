@@ -8,6 +8,7 @@ export const home = async(req, res) => {
 export const watch = async(req, res) => {
     const { id } = req.params; // id = req.params.id 랑 같음
     const video = await Video.findById(id);
+    console.log(video.fileUrl);
     if(video){
         return res.render("watch", {pageTitle: video.title, video });
     }
@@ -41,9 +42,11 @@ export const getUpload = (req, res) =>{
     return res.render("upload", {pageTitle: "Upload Video"});
 }
 export const postUpload = async(req, res) => {
+    const {path} = req.file;
     const { title, description, hashtags } = req.body;
     try{
         await Video.create({
+            fileUrl: path,
             title,
             description,
             hashtags: Video.formatHashtags(hashtags),
