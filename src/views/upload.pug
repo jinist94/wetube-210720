@@ -2,6 +2,8 @@ extends base.pug
 
 
 block content 
+    div 
+        button#startBtn Start Recording
     form(method="POST", enctype="multipart/form-data")
         label(for="video") Video Upload
         input(type="file", accept="video/*", name="video", id="video",required)
@@ -12,3 +14,5 @@ block content
     
     if errorMessage 
         span=errorMessage
+block scripts
+    script(src="/static/js/recorder.js")
