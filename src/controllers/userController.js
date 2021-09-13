@@ -139,7 +139,7 @@ export const postEdit = async (req, res) => {
         },
         file,
      } = req; // id = req.session.user.id;
-
+     console.log(file);
      let searchEdit = [];
      if(sessionEmail !== email){
         searchEdit.push({email});
@@ -157,7 +157,7 @@ export const postEdit = async (req, res) => {
      }
 
     const updatedUser = await User.findByIdAndUpdate(_id, {
-        avatarUrl: file ? file.path : avatarUrl,
+        avatarUrl: file ? file.location : avatarUrl,
         name,
         email,
         username,
