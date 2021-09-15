@@ -2,5 +2,15 @@ extends ../base
 include ../mixins/video
 
 block content
-    each video in user.videos 
-        +video(video)
+    div.profile-data
+        if isHeroku
+            img(src=user.avatarUrl).avatar
+        else
+            img(src="/" + user.avatarUrl).avatar
+
+        h3=user.username
+    div.video-grid
+        each video in user.videos 
+            +video(video)
+        else
+             span.empty__message No videos found.

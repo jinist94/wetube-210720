@@ -1,0 +1,14 @@
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 420px;
+  align-items: center;
+  margin-bottom: 30px;
+  img {
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+}
