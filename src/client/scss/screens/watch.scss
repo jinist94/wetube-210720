@@ -1,3 +1,21 @@
+#videoContainer {
+  position: relative;
+  video {
+    width: 100%;
+  }
+  #videoControls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #volume {
+    width: 10%;
+  }
+  #timeline {
+    width: 100%;
+  }
+}
+
 .video__comments {
   display: flex;
   flex-direction: column;

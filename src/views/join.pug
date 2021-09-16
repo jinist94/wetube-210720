@@ -4,7 +4,7 @@ block content
     if errorMessage
         span=errorMessage
 
-    form(method="POST")
+    form(method="POST").base-form
         input(name="name", placeholder="Name", type="text", required)
         input(name="email", placeholder="Email", type="email", required)
         input(name="username", placeholder="Username", type="text", required)

@@ -19,6 +19,10 @@ video.volume = volumeValue;
 let controlsTimeout = null;
 let controlsMovemenTimeout = null;
 
+const handleLoadedMetadata = () => {
+    totalTime.innerText = formatTime(Math.floor(video.duration));
+    timeline.max = Math.floor(video.duration); //when loaded video, we can get max
+}
 
 const handlePlayClick = (e) =>{
     console.log("click")
@@ -57,10 +61,7 @@ const formatTime = (seconds) =>
     new Date(seconds*1000).toISOString().substr(14,5);
 
 
-const handleLoadedMetadata = () => {
-    totalTime.innerText = formatTime(Math.floor(video.duration));
-    timeline.max = Math.floor(video.duration); //when loaded video, we can get max
-}
+
 const handleTimeUpdate = () => {
     currentTime.innerText = formatTime(Math.floor(video.currentTime));
     timeline.value = Math.floor(video.currentTime);

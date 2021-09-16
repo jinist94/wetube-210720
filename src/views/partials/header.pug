@@ -15,9 +15,16 @@ header
                 li
                     a(href="/users/logout") Log Out
                 li
-                    a(href=`/users/${loggedInUser._id}`) My Profile
+                    a(href=`/users/${loggedInUser._id}`)
+                        if loggedInUser.avatarUrl == ""
+                            span 😀
+                        else
+                            if !isHeroku 
+                                img(src="/" + loggedInUser.avatarUrl).avatar
+                            else
+                                img(src=loggedInUser.avatarUrl).avatar
             else
-                li
-                    a(href="/join") Join
-                li
-                    a(href="/login").header__btn Login
+                    li
+                        a(href="/join") Join
+                    li
+                        a(href="/login").header__btn Login
